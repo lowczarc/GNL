@@ -6,7 +6,7 @@
 #    By: lowczarc <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:03:01 by lowczarc          #+#    #+#              #
-#    Updated: 2017/11/15 14:46:22 by lowczarc         ###   ########.fr        #
+#    Updated: 2017/11/23 01:16:23 by lowczarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME): $(SRCS)
 	ranlib $(NAME)
 
 %.o: %.c
-	gcc -o $@ -c $< -Wall -Wextra -Werror
+	gcc -o $@ -I includes -c $< -Wall -Wextra -Werror
 
 .PHONY:clean fclean
 
