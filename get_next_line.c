@@ -6,7 +6,7 @@
 /*   By: lowczarc <lowczarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 16:03:54 by lowczarc          #+#    #+#             */
-/*   Updated: 2017/11/29 19:03:44 by lowczarc         ###   ########.fr       */
+/*   Updated: 2017/11/29 19:11:13 by lowczarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int		read_in_buff(int fd, char **line, t_filesbuff *buff, int *size)
 	return (0);
 }
 
-void			newbuff(t_filesbuff **buff)
+static void		newbuff(t_filesbuff **buff)
 {
 	if (!*buff)
 	{
