@@ -6,14 +6,14 @@
 /*   By: lowczarc <lowczarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 16:06:29 by lowczarc          #+#    #+#             */
-/*   Updated: 2017/11/29 18:12:22 by lowczarc         ###   ########.fr       */
+/*   Updated: 2017/11/29 19:14:01 by lowczarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #	ifndef GET_NEXT_LINE_H
 #	define GET_NEXT_LINE_H
 #include "libft.h"
-#define BUFF_SIZE 1
+#define BUFF_SIZE 32
 
 typedef struct	s_filesbuff
 {
