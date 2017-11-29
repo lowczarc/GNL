@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lowczarc <lowczarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 16:06:29 by lowczarc          #+#    #+#             */
-/*   Updated: 2017/11/28 21:52:09 by lowczarc         ###   ########.fr       */
+/*   Created: 2017/11/23 17:22:49 by lowczarc          #+#    #+#             */
+/*   Updated: 2017/11/28 22:33:54 by lowczarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#	ifndef GET_NEXT_LINE_H
-#	define GET_NEXT_LINE_H
+#include "get_next_line.h"
 #include "libft.h"
-#define BUFF_SIZE 1
+#include <fcntl.h>
 
-typedef struct	s_filesbuff
+int main(int argc, char **argv)
 {
+	char	*str;
+	int		fd;
 	int		i;
-	int		*t;
-	char	**buff;
-}				t_filesbuff;
 
-int				get_next_line(const int fd, char **line);
-
-#	endif
+	fd = open(argv[1], O_RDONLY);
+	while (1)
+	{
+		i = get_next_line(fd, &str);
+		ft_putstr(str);
+		ft_putnbr(i);
+		ft_putchar('\n');
+		if (i != 1)
+			break;
+	}
+}

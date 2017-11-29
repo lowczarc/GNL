@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lowczarc <lowczarc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lowczarc <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/28 16:06:29 by lowczarc          #+#    #+#             */
-/*   Updated: 2017/11/28 21:52:09 by lowczarc         ###   ########.fr       */
+/*   Created: 2017/11/16 13:12:35 by lowczarc          #+#    #+#             */
+/*   Updated: 2017/11/27 19:31:50 by lowczarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 typedef struct	s_filesbuff
 {
 	int		i;
-	int		*t;
 	char	**buff;
 }				t_filesbuff;
 
