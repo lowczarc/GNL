@@ -6,7 +6,7 @@
 /*   By: lowczarc <lowczarc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 16:03:54 by lowczarc          #+#    #+#             */
-/*   Updated: 2017/11/29 19:11:13 by lowczarc         ###   ########.fr       */
+/*   Updated: 2017/11/30 19:14:46 by lowczarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static char		**realloc_buff(t_filesbuff *buff, int fd)
 	{
 		t = (int*)ft_memalloc(sizeof(int) * buff->i + 1);
 		ret = (char**)ft_memalloc(sizeof(char*) * (buff->i + 2));
+		if (!t || !ret)
+			return (NULL);
 		while (--j > 0)
 		{
 			t[j] = buff->t[j];
@@ -37,7 +39,8 @@ static char		**realloc_buff(t_filesbuff *buff, int fd)
 	else
 		ret = buff->buff;
 	if (!ret[fd])
-		ret[fd] = (char*)ft_memalloc(sizeof(char) * BUFF_SIZE);
+		if (!(ret[fd] = (char*)ft_memalloc(sizeof(char) * BUFF_SIZE)))
+			return (NULL);
 	return (ret);
 }
 
@@ -45,7 +48,11 @@ static char		*ft_strnjoin(char *s1, char *s2, int *n1, int n2)
 {
 	char	*ret;
 
+	if (!s1 || !s2)
+		return (NULL);
 	ret = ft_strnew(*n1 + n2);
+	if (!ret)
+		return (NULL);
 	ft_memcpy(ret, s1, *n1);
 	ft_memcpy(&ret[*n1], s2, n2);
 	free(s1);
@@ -83,7 +90,8 @@ static void		newbuff(t_filesbuff **buff)
 {
 	if (!*buff)
 	{
-		*buff = (t_filesbuff*)malloc(sizeof(t_filesbuff));
+		if (!(*buff = (t_filesbuff*)malloc(sizeof(t_filesbuff))))
+			return ;
 		(*buff)->buff = NULL;
 		(*buff)->t = NULL;
 		(*buff)->i = 0;
@@ -101,7 +109,10 @@ int				get_next_line(int fd, char **line)
 	size = 0;
 	*line = ft_strdup("");
 	newbuff(&buff);
-	buff->buff = realloc_buff(buff, fd);
+	if (!buff)
+		return (-1);
+	if ((buff->buff = realloc_buff(buff, fd)) == NULL)
+		return (-1);
 	if (read(fd, buff->buff[fd], 0) == -1)
 		return (-1);
 	while ((t = read_in_buff(fd, line, buff, &size)) == 1)
